@@ -1,0 +1,230 @@
+*{
+	padding: 0px;
+	margin: 0px;
+	font-family: arial, verdana, sans-serif;
+	overflow-x: hidden;
+}
+/*================================== HEADER ======================================*/
+header.page{
+	background-color: #326ab5;
+	width: 100%;
+	padding: 15px;
+	color: #fff;
+	font-size: 22px;
+	margin-bottom: 10px;
+}
+
+header.page div {
+	display: inline-block;
+}
+
+header.page div.left {
+	width: calc(30% - 15px);
+}
+
+header.page div.right {
+	text-align: right;
+	width: calc(70% - 25px);
+	padding-right: 25px;
+}
+
+header.page div a, p{
+	display: inline-block;
+	vertical-align: middle;
+}
+
+header.page div a{
+	text-decoration: none;
+    color: #fff;
+    padding: 10px 20px;
+    background-color: #3b7cd5;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    margin-left: 25px;
+}
+
+header.page div a.plus{
+	font-size: 32px;
+    padding: 5px 20px;
+}
+
+/*================================== ASIDE AND SECTION ======================================*/
+
+section.page{
+	width: 100%;
+	display: table;
+	padding-left: 10px;
+}
+
+section.page aside, section.products_list{
+	display: table-cell;
+}
+
+section.page aside{
+	width: 20%;
+}
+
+section.page section.products_list{
+	width: 80%;
+	padding: 0px 20px 0px 10px;
+}
+
+/*================================== ASIDE HEADER ======================================*/
+
+header.header_aside{
+	width: 100%;
+	margin: 10px 0px;
+	display: block;
+}
+
+header.header_aside form div{
+	vertical-align: middle;
+	margin: 0px auto;
+}
+header.header_aside form div input{
+	padding: 10px 0px 10px 5px;
+	width: 85%;
+	border-top: #d3d3d3 1px solid;
+	border-right: none;
+	border-bottom: #d3d3d3 1px solid;
+	border-left: #d3d3d3 1px solid;
+	font-family: arial, verdana, sans-serif;
+	color: #326ab5;
+	font-size: 18px;
+	-webkit-border-radius: 5px 0px 0px 5px;
+    -moz-border-radius: 5px 0px 0px 5px;
+    border-radius: 5px 0px 0px 5px;
+    display: inline-block;
+    box-sizing: border-box;
+}
+header.header_aside form div input:focus{
+	outline: none;
+}
+
+header.header_aside form div button{
+	width: 15%;
+	border-top: #d3d3d3 1px solid;
+	border-right: #d3d3d3 1px solid;
+	border-bottom:#d3d3d3 1px solid;
+	border-left: none;
+	background-color: #fff; 
+	-webkit-border-radius: 0px 5px 5px 0px;
+    -moz-border-radius: 0px 5px 5px 0px;
+    border-radius: 0px 5px 5px 0px;
+    padding: 8px 0px 12px 0px;
+    margin-left: -5px;
+    display: inline-block;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+header.header_aside form div button:focus{
+	outline: none;
+}
+
+header.header_aside form div button img{
+	width: 21px;
+	height: 21px;
+	vertical-align: bottom;
+}
+
+/*================================== ASIDE PRODUCTS ======================================*/
+section.products{
+	width: 100%;
+	display: block;
+}
+section.products ul {
+	list-style: none;
+	height: 773px;
+}
+
+
+section.products ul li {
+	display: inline-block;
+	padding: 5px 5px;
+	box-sizing: border-box;
+	width: 100%;
+	border: #d3d3d3 1px solid;
+	margin: 2px 0px;
+}
+
+section.products ul li div.content_first, div.content_secound{
+	display: inline-block;
+	float: left;
+	padding: 2px;
+	box-sizing: border-box;
+}
+
+section.products ul li div.content_first {
+	width: 60% ;
+}
+
+section.products ul li div.content_first div.name h2{
+	font-size: 22px;
+}
+
+section.products ul li div.content_first div.description p{
+	font-size: 16px;
+}
+
+section.products ul li div.content_secound {
+	width: 40%;
+}
+
+section.products ul li div.content_secound div.price p{
+	font-size: 16px
+}
+section.products ul li div.content_secound div.btn_add{
+	text-align: right;
+}
+section.products ul li div.content_secound div.btn_add a{
+	text-decoration: none;
+    color: #fff;
+    padding: 10px 15px;
+    background-color: #3b7cd5;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    display: inline-block;
+    font-weight: bold;
+}
+
+/*================================== ASIDE PRODUCTS ======================================*/
+
+section.products_list{
+	box-sizing: border-box;
+}
+
+section.products_list table{
+	width: 100%;
+	border-collapse: collapse;
+	-webkit-border-radius: 5px 5px 0px 0px;
+    -moz-border-radius: 5px 5px 0px 0px;
+    border-radius: 5px 5px 0px 0px;
+}
+
+section.products_list table thead{
+	background-color: #3b7cd5;
+	color: #fff;
+}
+
+section.products_list table th, td{
+	padding: 10px 0px;
+}
+
+section.products_list table td, th{
+	text-align: center;
+	width: calc(100% / 7);
+}
+
+
+section.products_list table, tr{
+	border: #d3d3d3 1px solid;
+	transition: all .1s linear;
+}
+
+section.products_list table tbody tr td a img{
+	width: 30px;
+	height: 30px;
+}
