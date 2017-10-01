@@ -1,0 +1,25 @@
+a, a:hover{
+    color: #5a5a5a;
+}
+
+a.custom-settings-a:hover, .sub-menu:hover{
+    background-color: #f7f7f7;
+}
+
+.sub-menu{
+    padding-left: 50px;
+}
+
+.custom-settings-icon{
+    margin-right: 10px;
+}
+
+.custom-settings-icon-arrow{
+    position: absolute;
+    right: 20px;
+    top: 35%;
+}
+
+.side-bar{
+    padding-left: 0px;
+}
