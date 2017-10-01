@@ -8,7 +8,7 @@
 		return $result;
 	}
 
-	function login($email, $password){
+	function login($email){
 		$connection = connect_db();
 		$stmt = $connection->prepare("SELECT * FROM `users` WHERE `email` = ? LIMIT 1");
 		$stmt->bind_param('s', $email);
@@ -19,21 +19,21 @@
 		return $result;
 	}
 
-	function create ($name, $email, $password)
+	function create ($permission, $name, $email, $password)
 	{
 		$connection = connect_db();
-		$stmt = $connection->prepare( "INSERT INTO `users` ( `name`, `email`, `password` ) VALUES ( ?, ?, ? )" );
-		$stmt->bind_param('sss', $name, $email, $password);
+		$stmt = $connection->prepare( "INSERT INTO `users` (`permission`, `name`, `email`, `password` ) VALUES ( ?, ?, ?, ? )" );
+		$stmt->bind_param('ssss', $permission, $name, $email, $password);
 		$stmt->execute();
 		$stmt->close();
 		$connection->close();
 	}
 
-	function update($name, $email, $password, $id)
+	function update($permission, $name, $email, $password, $id)
 	{
 		$connection = connect_db();
-		$stmt = $connection->prepare( "UPDATE `users` SET `name` = ?, `email` = ?, `password` = ? WHERE `id` = ? LIMIT 1" );
-		$stmt->bind_param('sssi', $name, $email, $password, $id);
+		$stmt = $connection->prepare( "UPDATE `users` SET `permission`= ?, `name` = ?, `email` = ?, `password` = ? WHERE `id` = ? LIMIT 1" );
+		$stmt->bind_param('ssssi', $permission, $name, $email, $password, $id);
 		$stmt->execute();
 		$stmt->close();
 		$connection->close();	

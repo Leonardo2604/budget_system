@@ -1,10 +1,33 @@
+.text-inline{
+	display: inline;
+}
+
+.list-products{
+	height: 773px;
+	overflow-y: auto;
+	overflow-x: none;
+}
+
+.custom-container{
+	padding: 0px;
+}
+
+.custom-dropdown-right{
+	left: auto;
+	right: 0px;
+}
+
+td.center{
+	text-align: center;
+}
+/*
 *{
 	padding: 0px;
 	margin: 0px;
 	font-family: arial, verdana, sans-serif;
 	overflow-x: hidden;
 }
-/*================================== HEADER ======================================*/
+/*================================== HEADER ======================================
 header.page{
 	background-color: #326ab5;
 	width: 100%;
@@ -44,12 +67,12 @@ header.page div a{
     margin-left: 25px;
 }
 
-header.page div a.plus{
+header.page div a.clear{
 	font-size: 32px;
     padding: 5px 20px;
 }
 
-/*================================== ASIDE AND SECTION ======================================*/
+/*================================== ASIDE AND SECTION ======================================
 
 section.page{
 	width: 100%;
@@ -70,7 +93,7 @@ section.page section.products_list{
 	padding: 0px 20px 0px 10px;
 }
 
-/*================================== ASIDE HEADER ======================================*/
+/*================================== ASIDE HEADER ======================================
 
 header.header_aside{
 	width: 100%;
@@ -78,11 +101,11 @@ header.header_aside{
 	display: block;
 }
 
-header.header_aside form div{
+header.header_aside div{
 	vertical-align: middle;
 	margin: 0px auto;
 }
-header.header_aside form div input{
+header.header_aside div input{
 	padding: 10px 0px 10px 5px;
 	width: 85%;
 	border-top: #d3d3d3 1px solid;
@@ -98,11 +121,11 @@ header.header_aside form div input{
     display: inline-block;
     box-sizing: border-box;
 }
-header.header_aside form div input:focus{
+header.header_aside div input:focus{
 	outline: none;
 }
 
-header.header_aside form div button{
+header.header_aside div button{
 	width: 15%;
 	border-top: #d3d3d3 1px solid;
 	border-right: #d3d3d3 1px solid;
@@ -119,17 +142,17 @@ header.header_aside form div button{
     box-sizing: border-box;
 }
 
-header.header_aside form div button:focus{
+header.header_aside div button:focus{
 	outline: none;
 }
 
-header.header_aside form div button img{
+header.header_aside div button img{
 	width: 21px;
 	height: 21px;
 	vertical-align: bottom;
 }
 
-/*================================== ASIDE PRODUCTS ======================================*/
+/*================================== ASIDE PRODUCTS ======================================
 section.products{
 	width: 100%;
 	display: block;
@@ -190,7 +213,7 @@ section.products ul li div.content_secound div.btn_add a{
     font-weight: bold;
 }
 
-/*================================== ASIDE PRODUCTS ======================================*/
+/*================================== SECTIONS PRODUCTS ======================================
 
 section.products_list{
 	box-sizing: border-box;
@@ -228,3 +251,4 @@ section.products_list table tbody tr td a img{
 	width: 30px;
 	height: 30px;
 }
+*/

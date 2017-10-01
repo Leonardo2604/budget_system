@@ -12,8 +12,10 @@
 	<title><?=($id == -1)?"Cadaster":"Update"?></title>
 </head>
 <body>
-	<section class="conteiner">
-		<h1><?=($id == -1)?"Cadastrar":"Atualizar"?></h1>
+	<section class="register_product">
+		<header>
+			<h1><?=($id == -1)?"Cadastrar":"Atualizar"?></h1>
+		</header>
 		<section class="cadaster">
 			<form name="cadaster_product" action="/budget_system/controller/product/product_controller.php" method="post" enctype="multipart/form-data">
 				<label>Nome:</label>

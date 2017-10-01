@@ -1,102 +1,23 @@
-*{
-	padding: 0;
-	margin: 0;
-}
+/* Custom css */
 
-section.login,section.register{
-	width: 850px;
-	height: auto;
-	margin: 0 auto;
-	margin-top: 100px;
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
-	-webkit-box-shadow: 0px 2px 15px -4px rgba(0, 0, 0, 0.3);
-	-moz-box-shadow: 0px 2px 15px -4px rgba(0, 0, 0, 0.3);
-	box-shadow: 0px 2px 15px -4px rgba(0, 0, 0, 0.3);
-}
-
-section header{
-	background-color: #326ab5;
-	line-height: 60px;
-	text-align: center;
-	height: 60px;
-	padding: 10px 0px;
-	-webkit-border-radius: 5px 5px 0px 0px;
-	-moz-border-radius: 5px 5px 0px 0px;
-	border-radius: 5px 5px 0px 0px;
-}	
-
-section header h1{
-	color: #fff;
-	font-family: arial, verdana, sans-serif;
-	font-size: 38px;
-}
-
-section section{
-	width: 90%;
-	margin: 0px auto;
-	padding: 50px 0px 30px 0px;
-	font-family: arial, verdana, sans-serif;
-	color: #326ab5;
-	font-size: 20px;
-}
-
-section section div.input{
-	margin: 20px 0px;
-}
-
-section form input[type="email"],input[type="password"],input[type="text"]{
-	padding: 10px 0px;
-	width: 100%;
-	border: none;
-	border-bottom: #326ab5 2px solid;
-	margin-top: 10px; 
-	font-family: arial, verdana, sans-serif;
-	color: #326ab5;
-	font-size: 18px;
-}
-
-section form input[type="email"]:focus,input[type="password"]:focus,input[type="text"]:focus{
-	outline: none; 
-}
-
-section section div.input_btn{
+.container-main{
 	display: table;
-	width: 100%;
-	margin-top: 30px
-}
-
-section section div.input_btn div{
-	width: 50%;
-	display: table-cell;
-}
-
-section section div.input_btn div button, a{
-	background-color: #326ab5;
-	font-family: arial, verdana, sans-serif;
-	color: #fff;
-	font-size: 23px;
+	position: absolute;
+	top: calc(30% - 150px);
+    left: calc(50% - 200px);
+    max-width: 400px;
+    height: 300px;
+    padding-top: 15px;
+    padding-bottom: 15px;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
-	text-align: center;
+	-webkit-box-shadow: 0px 2px 35px -5px rgba(0, 0, 0, 0.2);
+	-moz-box-shadow: 0px 2px 35px -5px rgba(0, 0, 0, 0.2);
+	box-shadow: 0px 2px 35px -5px rgba(0, 0, 0, 0.2);
 }
 
-section section div.input_btn div button{
-	display: block;
-	margin-left: auto;
-	border: none;
-	padding: 25px 0px;
-	width: 80%;
-	cursor: pointer;
+.container-alert{
+	margin-top: 20px;
 }
 
-section section div.input_btn div a{
-	display: block;
-	border: none;
-	padding: 25px 0px;
-	width: 80%;
-	cursor: pointer;
-	text-decoration: none;
-}

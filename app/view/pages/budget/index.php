@@ -1,166 +1,58 @@
+<?php session_start(); 
+	if(!isset($_SESSION['name'], $_SESSION['id'], $_SESSION['email'])){
+		$erro = 'você/não/pode/ter/acesso/a/esta/parte/do/sistema!';
+        header('Location:/budget_system/app/view/pages/login/?erro='.$erro.'');
+	}
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
 	<meta charset="utf-8"/>
 	<title>Store</title>
-	<link rel="stylesheet" type="text/css" href="../../../css/budget.css"/>
-	<?php session_start(); 
-		if(!isset($_SESSION['name'], $_SESSION['id'], $_SESSION['email'])){
-			header('Location:/budget_system/app/view/pages/login/');
-		}
-	?>
+	<link rel="stylesheet" type="text/css" href="/budget_system/app/css/bootstrap/css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="/budget_system/app/css/font-awesome-4.7.0/css/font-awesome.min.css"/>
+	<link rel="stylesheet" type="text/css" href="/budget_system/app/css/budget.css"/>
+	<script type="text/javascript" src="../../../javascript/budget/budget.js" defer="defer"></script>
 </head>
 <body>
-	<header class="page">
-		<div class="left">
-			<p>Olá <?= $_SESSION['name'] ?></p>
-			<a href='/budget_system/controller/budget/budget_controller.php?action=new' title="Fazer outro orçamento" class="plus">+</a>
-		</div>
-		<div class="right">
-			<p><?= $_SESSION['email'] ?></p>
-			<a href="../../../../controller/user/user_controller.php?logout=true">sair</a>	
-		</div>
+	<header class="container-fluid custom-container">
+		<nav class="navbar navbar-default navbar-static-top" role="navigation">
+			<h3>Olá <?= $_SESSION['name'] ?></h3>
+			<ul class="nav navbar-top-links navbar-right">
+				<li class="dropdown dropdown-menu-right">
+		            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+		                <?= $_SESSION['email'] ?>
+		            </a>
+		            <ul class="dropdown-menu custom-dropdown-right">
+		                <li>
+		                	<a href="/budget_system/controller/user/user_controller.php?logout=true">
+		                		<i class="fa fa-sign-out fa-fw"></i> Sair
+		                	</a>
+		                </li>
+		            </ul>
+		            <!-- /.dropdown-user -->
+		        </li>
+		    </ul>
+		</nav>
 	</header>
-	<section class="page">
-		<aside>
+	<section class="row container-fluid">
+		<aside class="col-2">
 			<header class="header_aside">
-				<form name="search" action="" method="POST" enctype="multipart/form-data">
-					<div class="container_search">
-						<input type="text" pattern="[^'\x22]+" name="text_search"/>
-						<button type="submit" name="btn_search"><img src="../../../image/magnifying_glass.png"/></button><!--temporario-->
-					</div>
-				</form>
+				<div class="form-group">
+					<input type="text" class="form-control" pattern="[^'\x22]+" name="text_search" autocomplete="true" placeholder="Pesquisar..." />
+				</div>
 			</header>
-			<section class="products">
-				<ul>
-					<?php
-						require('../../../../db/connection.php');
-						$connection = connect_db();
-						if($connection){
-							if(isset($_POST['btn_search']) || isset($_SESSION['text_search']))
-							{
-								$_SESSION['text_search'] = (isset($_POST['text_search']))?$_POST['text_search']:$_SESSION['text_search'];
-								$results = $connection->query('SELECT * FROM `products` WHERE `name` LIKE  "%'.$_SESSION['text_search'].'%" ');	
-							}else
-							{
-								$results = $connection->query("SELECT * FROM `products`");
-							}
-							while($result = $results->fetch_assoc()){ 
-					?>
-								<li>
-									<div class="content_first">
-										<div class="name">
-											<h2><?=$result['name']?></h2>
-										</div>
-										<div class="description">
-											<p><?=$result['description']?></p>
-										</div>
-									</div>
-									<div class="content_secound">
-										<div class="price">
-											<p>Preço:</p>
-											<?=$result['price']?>
-											<br/>
-											<p>Mão de obra:</p>
-											<?=$result['labor']?>
-										</div>
-										<div class="btn_add">
-											<a href='/budget_system/controller/budget/budget_controller.php?action=add&id=<?= (int)$result['id'] ?>' title="Adcionar da lista">+</a>
-										</div>
-									</div>
-								</li>
-					<?php	}
-							$connection->close();
-						}else{
-							echo '<p>Lamentamos o ocorrido, já estamos fazendo todo o possivel para que o sistema volte ao normal o quanto antes </p>';
-						}
-					?>
-				</ul>
+			<section id="products" class="">
+				<!--IMPORTANT NAME CLASS LOOK budget.js function search-->
 			</section>
 		</aside>
-		<section class="products_list">
-			<table>
-				<thead>
-					<tr>
-						<th>Ações</th>
-						<th>Nome</th>
-						<th>Descrição</th>
-						<th>Preço</th>
-						<th>Mão de obra</th>
-						<th>Qtd</th>
-						<th>Total</th>
-					</tr>
-				</thead>
-				<tbody>
-					<?php
-						$total = 0;
-						if(isset($_SESSION['products']))
-						{
-							$products = $_SESSION['products'];
-							for ($i=0; $i < count($products); $i++) { 
-					?>		
-								<tr>
-									<td>
-										<a href='/budget_system/controller/budget/budget_controller.php?action=remove&indice=<?= $i ?>' title="Retirar da lista"><img src="../../../image/icon_trash.png"/></a>
-									</td>
-									<td><?= $products[$i]['name'] ?></td>
-									<td><?= $products[$i]['description'] ?></td>
-									<td class="price<?=$i?>"><?= $products[$i]['price'] ?></td>
-									<td class="labor<?=$i?>"><?= $products[$i]['labor'] ?></td>
-									<td>
-										<input type="number" name="amount<?=$i?>" min="1" max="999" pattern="[0-9]" onchange="update_value(<?=$i?>)" value="<?= $products[$i]['amount'] ?>"/>
-									</td>
-									<td class="total<?=$i?> total"><?= $products[$i]['price'] + $products[$i]['labor'] ?></td>
-								</tr>
-					<?php
-
-								$total += ($products[$i]['price'] + $products[$i]['labor']);
-					    	}	
-						}
-					?>
-				</tbody>
-				<tfoot>
-					<tr>
-						<td>Total:</td>
-						<td colspan="5"></td>
-						<td class="full_total"><?= $total ?></td>
-					</tr>
-				</tfoot>
-			</table>
+		<section id="products_list" class="col">
+				<!--IMPORTANT NAME CLASS LOOK budget.js function add_to_budget-->
 		</section>
 	</section>
-	<script type="text/javascript">
-		all_total = document.getElementsByClassName('total');
-		full_total = document.getElementsByClassName('full_total')[0];
-		load_budget();
 
-		function update_value(indice)
-		{
-			amount = document.getElementsByName('amount'+indice)[0].value;
-			if(amount > 999)
-			{
-				amount = 999;
-			}
-			window.location = '/budget_system/controller/budget/budget_controller.php?qtd='+amount+'&indice='+indice;
-		}
-
-		function load_budget()
-		{
-			for (var i = 0; i < all_total.length; i++) {
-				amount = document.getElementsByName('amount'+i)[0].value;
-				labor = parseFloat(document.getElementsByClassName('labor'+i)[0].innerHTML);
-				price = parseFloat(document.getElementsByClassName('price'+i)[0].innerHTML);
-				total = document.getElementsByClassName('total'+i)[0];
-				total.innerHTML = ((labor + price) * amount).toFixed(2);
-			}
-
-			temp_total = 0;
-			for (var i = 0; i < all_total.length; i++) {
-				temp_total += parseFloat(all_total[i].innerHTML);
-			}
-
-			full_total.innerHTML = temp_total.toFixed(2);
-		}
-	</script>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/budget_system/app/css/bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>

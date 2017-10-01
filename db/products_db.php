@@ -1,11 +1,26 @@
 <?php
 	require('connection.php');
 
-	function return_all()
+	function return_all($nome = "", $limit = "", $index_start = 1)
+	{
+		$connection = connect_db();
+		if($limit == "")
+		{
+			$result = ($nome == "")?$connection->query("SELECT * FROM `products`"):$connection->query('SELECT * FROM `products` WHERE `name` LIKE "%'.$nome.'%"');
+		}
+		else
+		{
+			$result = $connection->query("SELECT * FROM `products` LIMIT $index_start, $limit");	
+		}
+		return $result;
+	}
+
+	function num_products()
 	{
 		$connection = connect_db();
 		$result = $connection->query( "SELECT * FROM `products`" );
-		return $result;
+		$amount_rows = $result->num_rows;
+		return $amount_rows;
 	}
 
 	function create ($name, $description, $price, $cash_discount, $labor)
